@@ -1,0 +1,101 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cashflo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Cashflo</h1>  
+      <label for="month" class="sr">Month</label>
+      <input type="month" id="month" class="month">
+    </header>
+
+    <div class="hero">
+      <small>Left to spend this month</small>
+      <div class="big" id="left">₹0</div>
+      <div class="stats">
+        <div><b id="inc">₹0</b>Income</div>
+        <div><b id="spent">₹0</b>Spent</div>
+        <div><b id="bud">₹0</b>Budgeted</div>
+      </div>
+    </div>
+
+    <div class="charts">
+      <section>
+        <h2>Where your money went</h2>
+        <div class="donut-wrap">
+          <div class="donut" id="donut"><div id="donutCenter"></div></div>
+          <ul class="legend" id="legend"></ul>
+        </div>
+      </section>
+      <section>
+        <h2>Last 6 months</h2>
+        <div class="months" id="months"></div>
+        <div class="key"><span><i class="k-in"></i> Income</span><span><i class="k-out"></i> Spent</span></div>
+      </section>
+    </div>
+
+    <div class="grid">
+      <div class="col">
+        <section>
+          <h2 id="formTitle">Add a transaction</h2>
+          <div class="seg" role="group" aria-label="Type">
+            <button type="button" id="tExp" aria-pressed="true">Expense</button>
+            <button type="button" id="tInc" aria-pressed="false">Income</button>
+          </div>
+          <div class="row2">
+            <div>
+              <label for="amount">Amount (₹)</label>
+              <input id="amount" type="number" min="0" step="0.01" inputmode="decimal">
+            </div>
+            <div>
+              <label for="date">Date</label>
+              <input id="date" type="date">
+            </div>
+          </div>
+          <div class="full">
+            <label for="cat">Category</label>
+            <select id="cat"></select>
+          </div>
+          <div class="full">
+            <label for="note">Note (optional)</label>
+            <input id="note" type="text" maxlength="60" placeholder="e.g. Lunch with Riya">
+          </div>
+          <button class="primary" id="add">Add transaction</button>
+          <button class="ghost wide" id="cancel" hidden>Cancel edit</button>
+          <p class="err" id="err" role="alert"></p>
+        </section>
+
+        <section>
+          <h2>Transactions</h2>
+          <div class="filters">
+            <input id="q" type="search" class="span" placeholder="Search notes or categories" aria-label="Search transactions">
+            <select id="fType" aria-label="Filter by type">
+              <option value="all">All types</option>
+              <option value="expense">Expenses</option>
+              <option value="income">Income</option>
+            </select>
+            <select id="fCat" aria-label="Filter by category"></select>
+            <button class="ghost span" id="export">Export this month as CSV</button>
+          </div>
+          <div id="list"></div>
+        </section>
+      </div>
+
+      <div class="col">
+        <section>
+          <h2>Budgets by category</h2>
+          <div id="budgets"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
